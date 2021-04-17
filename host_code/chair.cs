@@ -21,7 +21,11 @@ public class chair
     {
         if (port !=null &&port.IsOpen)
         {
-            portWrite("a" + (int) angle);
+            int true_angle = (int) angle + 90;
+            if((true_angle < 10)||(true_angle > 170)){
+                portWrite("a90"); // reset to midpoint
+            }
+            portWrite("a" + true_angle);
         }
     }
 
