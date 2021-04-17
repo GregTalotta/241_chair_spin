@@ -10,14 +10,27 @@ public class chair
     void Start()
     {
         port.Open();
+        if (port !=null &&port.IsOpen)
+        {
+            portWrite("start");
+        }
     }
 
     // move is called once per update
-    void move(double angle)
+    void Move(double angle)
     {
         if (port !=null &&port.IsOpen)
         {
-            portWrite((int) angle);
+            portWrite("angle " + (int) angle);
         }
+    }
+
+    void End()
+    {
+        if (port !=null &&port.IsOpen)
+        {
+            portWrite("end");
+        }
+        port.Close();
     }
 }
