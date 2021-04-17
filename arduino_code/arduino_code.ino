@@ -1,4 +1,7 @@
 // Greg Talotta
+#include <Servo.h>
+
+Servo serv;
 const int servoPin = 3;
 
 void start()
@@ -13,8 +16,9 @@ void end()
   return;
 }
 
-void move()
+void move(int angle)
 {
+  serv.write(angle);
   return;
 }
 
@@ -31,14 +35,14 @@ void handleCommand(String command)
   }
   else if (command[0] == 'a')
   {
-    move();
+    move(command.substring(1).toInt());
   }
   return;
 }
 
 void setup()
 {
-  pinMode(servoPin, OUTPUT);
+  serv.attach(servoPin);
   Serial.begin(9600);
 }
 
