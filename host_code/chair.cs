@@ -21,7 +21,7 @@ public class chair
     {
         if (port !=null &&port.IsOpen)
         {
-            portWrite("angle " + (int) angle);
+            portWrite("a" + (int) angle);
         }
     }
 
