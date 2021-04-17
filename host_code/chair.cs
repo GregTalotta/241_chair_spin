@@ -1,38 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.IO.Ports;
+using UnityEngine;
 
-
-public class chair
+public class Chair
 {
-    SerialPort port = new SerialPort("COM7", 9600); //Set the board COM
+    SerialPort port = new SerialPort("COM3", 9600); //Set the board COM
     // Start is called before the first update
-    void Start()
+    public void Start()
     {
         port.Open();
         if (port !=null &&port.IsOpen)
         {
-            portWrite("start");
+            port.Write("start");
         }
     }
 
     // move is called once per update
-    void Move(double angle)
+    public void Move(double angle)
     {
         if (port !=null &&port.IsOpen)
         {
             int true_angle = (int) angle + 90;
             if((true_angle < 10)||(true_angle > 170)){
-                portWrite("a90"); // reset to midpoint
+                port.Write("a90"); // reset to midpoint
             }
-            portWrite("a" + true_angle);
+            port.Write("a" + true_angle);
         }
     }
 
-    void End()
+    public void End()
     {
         if (port !=null &&port.IsOpen)
         {
-            portWrite("end");
+            port.Write("end");
         }
         port.Close();
     }
