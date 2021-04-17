@@ -1,31 +1,23 @@
+using System;
 using System.IO.Ports;
 
 
 public class chair
 {
-    SerialPort sp = new SerialPort(path, 9600);
+    SerialPort port = new SerialPort("COM7", 9600); //Set the board COM
     
-    // Start is called before the first frame update
+    // Start is called before the first update
     void Start()
     {
-        sp.Open();
-        sp.ReadTimeout = 100;
+        port.Open();
     }
 
-    // move is called once per frame
-    void move()
+    // move is called once per update
+    void move(double angle)
     {
-        if (sp.IsOpen)
+        if (port !=null &&port.IsOpen)
         {
-            try
-            {
-
-            }
-            catch (System.Exception)
-            {
-               
-            }
-
+            portWrite((int) angle);
         }
     }
 }
