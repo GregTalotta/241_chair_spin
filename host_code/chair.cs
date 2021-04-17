@@ -15,10 +15,14 @@ public class chair
     // move is called once per frame
     void move()
     {
-        if (sp.IsOpen){
-            try{
+        if (sp.IsOpen)
+        {
+            try
+            {
+
             }
-            catch (System.Exception){
+            catch (System.Exception)
+            {
                
             }
 
