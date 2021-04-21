@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-// using System;
 using UnityEngine;
 using System.IO.Ports;
 using System.Threading;
@@ -45,11 +44,8 @@ public class Chair : MonoBehaviour
         if(port.IsOpen){
             int true_angle = (int) angle;
             string sendstr = "a" + true_angle +"\n";
-            // if((true_angle < 10)||(true_angle > 170)){
-            //     sendstr = "a90\n"; // reset to midpoint
-            // }
             print("moved: " +sendstr);
-            port.Write(sendstr);
+            // port.Write(sendstr); // debug print
         }
         else{
             if(port != null){
@@ -58,14 +54,6 @@ public class Chair : MonoBehaviour
                 port.Write("a90\n");
             }
         }
-        // if (port !=null &&port.IsOpen)
-        // {
-        //     int true_angle = (int) angle + 90;
-        //     if((true_angle < 10)||(true_angle > 170)){
-        //         port.Write("a90"); // reset to midpoint
-        //     }
-        //     port.Write("a" + true_angle);
-        // }
     }
 
     void OnApplicationQuit(){
