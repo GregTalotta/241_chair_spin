@@ -19,7 +19,7 @@ public class Chair : MonoBehaviour
             port.RtsEnable = true;
             if(port.IsOpen){
                 port.Close();
-                print("Closing port, because it's already open");
+                // print("Closing port, because it's already open"); // debug print
             }
             else
             {
@@ -28,15 +28,15 @@ public class Chair : MonoBehaviour
                 port.Write("a90\n");
             }
         }
-        else{
-            if(port.IsOpen)
-            {
-                print("port is already open");
-            }
-            else{
-                print("port == null");
-            }
-        }
+        // else{ // debug print
+        //     if(port.IsOpen)
+        //     {
+        //         print("port is already open");
+        //     }
+        //     else{
+        //         print("port == null");
+        //     }
+        // }
     }
     // move is called once per update
     public static void Move(int angle)
@@ -44,8 +44,8 @@ public class Chair : MonoBehaviour
         if(port.IsOpen){
             int true_angle = (int) angle;
             string sendstr = "a" + true_angle +"\n";
-            print("moved: " +sendstr);
-            // port.Write(sendstr); // debug print
+            // print("moved: " +sendstr); // debug print
+            port.Write(sendstr); 
         }
         else{
             if(port != null){
